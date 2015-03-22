@@ -5,7 +5,7 @@ Using Smartphones Data Set.
 # Downloading and loading data
 
 - Use link to download data https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
-- Reads the activity labels to activityLabels
+
 
 # Manipulating and cleaning data
 
