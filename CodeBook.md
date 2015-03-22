@@ -30,12 +30,12 @@ Using Smartphones Data Set.
 - Everything <- cbind(Features, Merge)
 
 2. Extracts the mean and std columns and adds subject and activity to the merged data
-- Subset_FeaturesNames <- FeaturesNames$V2[grep("mean\\(\\)|std\\(\\)", FeaturesNames$V2)]
+-- Subset_FeaturesNames <- FeaturesNames$V2[grep("mean\\(\\)|std\\(\\)", FeaturesNames$V2)]
 - Add_Names <- c(as.character(Subset_FeaturesNames), "subject", "activity" )
 - Everything <- subset(Everything, select = Add_Names)
 
 3. Names the activity ID's in the merged data (Everything) based on the activity labels file
-- Everything$activity <- as.character(Everything$activity)
+-- Everything$activity <- as.character(Everything$activity)
 - Everything$activity[Everything$activities == 1] <- "Walking"
 - Everything$activity[Everything$activities == 2] <- "Walking Upstairs"
 - Everything$activity[Everything$activities == 3] <- "Walking Downstairs"
@@ -45,7 +45,7 @@ Using Smartphones Data Set.
 - Everything$activities <- as.factor(Everything$activities)
 
 4. Renames, where needed, column headers that are not immediately straight forward to make them easy to understand
-- names(Everything) <- gsub("^t", "time", names(Data))
+-- names(Everything) <- gsub("^t", "time", names(Data))
 - names(Everything) <- gsub("^f", "frequency", names(Data))
 - names(Everything) <- gsub("Acc", "Accelerometer", names(Data))
 - names(Everything) <- gsub("Gyro", "Gyroscope", names(Data))
@@ -54,7 +54,7 @@ Using Smartphones Data Set.
 #Writing final data to CSV
 
 5. creates a text file containing the mean of all of the columns from the Everything data frame
-- library(plyr)
+-- library(plyr)
 - Everything_Mean <- aggregate(. ~subject + activity, Everything, mean)
 - Everything_Mean <- Everything_Mean[order(Everything_Mean$subject, Everything_Mean$activity),]
 - write.table(Everything_Mean, file = "Average_tidy_data.txt", row.name=FALSE)
