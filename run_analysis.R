@@ -13,7 +13,7 @@ names(Subject)<-c("subject")
 names(Activity)<- c("activity")
 FeaturesNames <- read.table(file.path(data_dir, "features.txt"), header = FALSE)
 names(Features)<- FeaturesNames$V2
-Merge <- cbind(dataSubject, dataActivity)
+Merge <- cbind(Subject, Activity)
 Everything <- cbind(Features, Merge)
 Subset_FeaturesNames <- FeaturesNames$V2[grep("mean\\(\\)|std\\(\\)", FeaturesNames$V2)]
 Add_Names <- c(as.character(Subset_FeaturesNames), "subject", "activity" )
