@@ -8,10 +8,9 @@ Using Smartphones Data Set.
 
 
 # Manipulating and cleaning data
+# 1. Merges test data and trainning data to object Everything.
 
-1. Merges test data and trainning data to object Everything.
-
--- setwd("~Documents/Coursera Data Science/Course 3/UCI HAR Dataset")
+- setwd("~Documents/Coursera Data Science/Course 3/UCI HAR Dataset")
 - data_dir <- "~Documents/Coursera Data Science/Course 3/UCI HAR Dataset"
 - ActivityTest  <- read.table(file.path(data_dir, "y_test.txt" ), header = FALSE)
 - ActivityTrain <- read.table(file.path(data_dir, "y_train.txt"), header = FALSE)
@@ -29,15 +28,15 @@ Using Smartphones Data Set.
 - Merge <- cbind(Subject, Activity)
 - Everything <- cbind(Features, Merge)
 
-2. Extracts the mean and std columns and adds subject and activity to the merged data
+# 2. Extracts the mean and std columns and adds subject and activity to the merged data
 
--- Subset_FeaturesNames <- FeaturesNames$V2[grep("mean\\(\\)|std\\(\\)", FeaturesNames$V2)]
+- Subset_FeaturesNames <- FeaturesNames$V2[grep("mean\\(\\)|std\\(\\)", FeaturesNames$V2)]
 - Add_Names <- c(as.character(Subset_FeaturesNames), "subject", "activity" )
 - Everything <- subset(Everything, select = Add_Names)
 
-3. Names the activity ID's in the merged data (Everything) based on the activity labels file
+# 3. Names the activity ID's in the merged data (Everything) based on the activity labels file
 
--- Everything$activity <- as.character(Everything$activity)
+- Everything$activity <- as.character(Everything$activity)
 - Everything$activity[Everything$activities == 1] <- "Walking"
 - Everything$activity[Everything$activities == 2] <- "Walking Upstairs"
 - Everything$activity[Everything$activities == 3] <- "Walking Downstairs"
@@ -46,9 +45,9 @@ Using Smartphones Data Set.
 - Everything$activity[Everything$activities == 6] <- "Laying"
 - Everything$activities <- as.factor(Everything$activities)
 
-4. Renames, where needed, column headers that are not immediately straight forward to make them easy to understand
+# 4. Renames, where needed, column headers that are not immediately straight forward to make them easy to understand
 
--- names(Everything) <- gsub("^t", "time", names(Data))
+- names(Everything) <- gsub("^t", "time", names(Data))
 - names(Everything) <- gsub("^f", "frequency", names(Data))
 - names(Everything) <- gsub("Acc", "Accelerometer", names(Data))
 - names(Everything) <- gsub("Gyro", "Gyroscope", names(Data))
@@ -56,11 +55,11 @@ Using Smartphones Data Set.
 - names(Everything) <- gsub("BodyBody", "Body", names(Data))
 #Writing final data to CSV
 
-5. creates a text file containing the mean of all of the columns from the Everything data frame
+# 5. creates a text file containing the mean of all of the columns from the Everything data frame
 
--- library(plyr)
+- library(plyr)
 - Everything_Mean <- aggregate(. ~subject + activity, Everything, mean)
 - Everything_Mean <- Everything_Mean[order(Everything_Mean$subject, Everything_Mean$activity),]
 - write.table(Everything_Mean, file = "Average_tidy_data.txt", row.name=FALSE)
 
-#Creates the output text file.
+# Creates the output text file.
