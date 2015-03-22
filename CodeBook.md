@@ -6,9 +6,6 @@ Using Smartphones Data Set.
 
 - Use link to download data https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 - Reads the activity labels to activityLabels
-- Reads the column names of data (a.k.a. features) to features
-- Reads the test data.frame to testData
-- Reads the trainning data.frame to trainningData
 
 # Manipulating and cleaning data
 
